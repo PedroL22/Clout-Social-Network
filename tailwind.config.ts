@@ -7,7 +7,15 @@ const config: Config = {
     './layout/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#85005b',
+        primaryDark: '#520647',
+        primaryDarker: '#0e002f',
+        secondary: '#c4b282',
+        secondaryDark: '#865a19',
+      },
+    },
   },
   plugins: [],
 }
