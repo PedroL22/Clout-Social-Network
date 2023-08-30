@@ -21,16 +21,18 @@ export const Post = ({ username, text, postDate }: PostProps) => {
           alt={`${username} profile picture`}
           width={50}
           height={50}
-          className='rounded-md'
+          className='cursor-pointer rounded-md'
         />
 
         <div className='flex w-full justify-between'>
           <div className='flex flex-col justify-center'>
-            <p className='text-lg text-stone-500'>@{username}</p>
+            <p className='cursor-pointer text-lg text-stone-500 hover:underline'>@{username}</p>
             <p className='text-xs sm:text-sm'>{postDate}</p>
           </div>
 
-          <DotsThreeVertical className='flex self-center' />
+          <div className='flex cursor-pointer self-center rounded-full p-1 text-stone-500 hover:bg-stone-200'>
+            <DotsThreeVertical weight='bold' />
+          </div>
         </div>
       </div>
 
@@ -43,13 +45,13 @@ export const Post = ({ username, text, postDate }: PostProps) => {
           <Heart
             size={28}
             weight='light'
-            className='text-stone-500'
+            className='cursor-pointer text-stone-500 hover:text-red-700'
           />
           <div className='h-full w-[1px] bg-stone-300' />
           <ChatCircle
             size={28}
             weight='light'
-            className='text-stone-500'
+            className='cursor-pointer text-stone-500 hover:text-blue-700'
           />
         </div>
       </div>
