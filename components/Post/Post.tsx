@@ -30,8 +30,15 @@ export const Post = ({ username, text, postDate }: PostProps) => {
             <p className='text-xs sm:text-sm'>{postDate}</p>
           </div>
 
-          <div className='flex cursor-pointer self-center rounded-full p-1 text-stone-500 hover:bg-stone-200'>
-            <DotsThreeVertical weight='bold' />
+          <div
+            role='button'
+            aria-label='More options'
+            className='flex cursor-pointer self-center rounded-full p-1 text-stone-500 hover:bg-stone-200'
+          >
+            <DotsThreeVertical
+              weight='bold'
+              aria-hidden
+            />
           </div>
         </div>
       </div>
@@ -45,12 +52,16 @@ export const Post = ({ username, text, postDate }: PostProps) => {
           <Heart
             size={28}
             weight='light'
+            role='button'
+            aria-label='Like'
             className='cursor-pointer text-stone-500 hover:text-red-700'
           />
           <div className='h-full w-[1px] bg-stone-300' />
           <ChatCircle
             size={28}
             weight='light'
+            role='button'
+            aria-label='Comment'
             className='cursor-pointer text-stone-500 hover:text-blue-700'
           />
         </div>
