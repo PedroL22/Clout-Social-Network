@@ -1,10 +1,13 @@
 'use client'
 
 import Image from 'next/image'
+import { useState } from 'react'
 
-import { DotsThreeVertical, Heart, ChatCircle } from '@phosphor-icons/react'
+import { ChatCircle, DotsThreeVertical, Heart } from '@phosphor-icons/react'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 
 import { PostEntity } from '@entities'
+import DropdownMenuDemo from './components/Dropdown/Dropdown'
 
 interface PostProps extends Partial<PostEntity> {
   username: string
@@ -13,6 +16,10 @@ interface PostProps extends Partial<PostEntity> {
 }
 
 export const Post = ({ username, text, postDate }: PostProps) => {
+  const [bookmarksChecked, setBookmarksChecked] = useState(true)
+  const [urlsChecked, setUrlsChecked] = useState(false)
+  const [person, setPerson] = useState('pedro')
+
   return (
     <article className='w-80 rounded-xl bg-stone-100 p-8 shadow-md sm:w-[36rem]'>
       <div className='flex space-x-3'>
@@ -30,16 +37,22 @@ export const Post = ({ username, text, postDate }: PostProps) => {
             <p className='text-xs sm:text-sm'>{postDate}</p>
           </div>
 
-          <div
-            role='button'
-            aria-label='More options'
-            className='flex cursor-pointer self-center rounded-full p-1 text-stone-500 hover:bg-stone-200'
-          >
-            <DotsThreeVertical
-              weight='bold'
-              aria-hidden
-            />
-          </div>
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger asChild>
+              <div
+                role='button'
+                aria-label='More options'
+                tabIndex={0}
+                className='flex cursor-pointer self-center rounded-full p-1 text-stone-500 hover:bg-stone-200'
+              >
+                <DotsThreeVertical
+                  weight='bold'
+                  aria-hidden
+                />
+              </div>
+            </DropdownMenu.Trigger>
+            <DropdownMenuDemo />
+          </DropdownMenu.Root>
         </div>
       </div>
 
@@ -54,6 +67,7 @@ export const Post = ({ username, text, postDate }: PostProps) => {
             weight='light'
             role='button'
             aria-label='Like'
+            tabIndex={0}
             className='cursor-pointer text-stone-500 hover:text-red-700'
           />
           <div className='h-full w-[1px] bg-stone-300' />
@@ -62,6 +76,7 @@ export const Post = ({ username, text, postDate }: PostProps) => {
             weight='light'
             role='button'
             aria-label='Comment'
+            tabIndex={0}
             className='cursor-pointer text-stone-500 hover:text-blue-700'
           />
         </div>
