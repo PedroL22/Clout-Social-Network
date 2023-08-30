@@ -5,6 +5,7 @@ import { ReactNode } from 'react'
 import './globals.css'
 
 import { Header } from '@layout/Header'
+import { MainContainer } from '@layout/MainContainer'
 
 const dmSans = DM_Sans({ subsets: ['latin'] })
 
@@ -18,7 +19,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang='en'>
       <body className={dmSans.className}>
         <Header />
-        {children}
+        <MainContainer>{children}</MainContainer>
       </body>
     </html>
   )
